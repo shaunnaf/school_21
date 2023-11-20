@@ -1,0 +1,10 @@
+Row 1 with text cat another text
+Row 2 with text cat
+Row 3 with text CAT another text
+ROW 4 with text CAT
+ROW 5 with text Cat
+Row 6 with text less another text
+Row 7 with text less
+Row 8 with text LESS another text
+ROW 9 with text LESS
+ROW 10 with text Less
