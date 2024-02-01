@@ -3,6 +3,7 @@
 
 #define _GNU_SOURCE
 
+#include <check.h>
 #include <getopt.h>
 #include <regex.h>
 #include <stdbool.h>
@@ -26,8 +27,8 @@ int parser(int argc, char *argv[], opt *options);
 // void grep(FILE *mf, opt options, regex_t *preg, bool multiple_files,
 //         char *filename);
 void reader(int argc, char *argv[], opt *options);
-void grep_2(FILE *mf, int argc, char *argv[], opt options, regex_t *preg,
-            bool multiple_files, char *filename);
+void grep_2(FILE *mf, int argc, char *argv[], opt options, bool multiple_files,
+            char *filename);
 void patterns_init(Patterns *const patts);
 void patterns_add(Patterns *const patts, const char *const patt);
 void patterns_add_from_string(Patterns *const patts, const char *const str);

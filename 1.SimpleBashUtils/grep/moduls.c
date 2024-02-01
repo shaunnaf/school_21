@@ -9,8 +9,10 @@ void grep_files_with_matches(bool multiple_files, char *filename, opt options,
     }
     printf("%s\n", filename);
   } else {
-    if (!options.h && multiple_files) printf("%s:", filename);
-    if (options.c) printf("0\n");
+    if (options.c) {
+      if (!options.h && multiple_files) printf("%s:", filename);
+      printf("0\n");
+    }
   }
 }
 
@@ -31,33 +33,39 @@ void grep_lines_with_matches(regmatch_t match, char *line, opt options) {
   }
 }
 
-void grep_2(FILE *mf, int argc, char *argv[], opt options, regex_t *preg,
-            bool multiple_files, char *filename) {
-  char *line = 0;
-  int count_line_c, count_line_n, res;
+void grep_2(FILE *mf, int argc, char *argv[], opt options, bool multiple_files,
+            char *filename) {
+  regex_t preg;
+  char buf[1024];
+  int count_line_c, count_line_n, res, last_line;
   char *end = argv[argc];
-  count_line_c = count_line_n = 0;
-  size_t lenght = 0;
+  count_line_c = count_line_n = last_line = 0;
   regmatch_t match;
-  while (getline(&line, &lenght, mf) > 0) {
+  while (fgets(buf, sizeof(buf), mf)) {
+    count_line_n++;
+    char *line = buf;
     for (size_t i = 0; i < options.patts.cur_size; i++) {
-      if (regcomp(preg, options.patts.data[i], options.regex_flag))
+      if (regcomp(&preg, options.patts.data[i], options.regex_flag)) {
         fprintf(stderr, "failed to compile regcomp");
-      else {
-        if (options.patts.data[i] == end)
+      } else {
+        if (options.patts.data[i] == end) {
           fprintf(stderr, "no pattern\n");
-        else {
-          count_line_n++;
-          res = regexec(preg, line, 1, &match, 0);
+        } else {
+          res = regexec(&preg, line, 1, &match, 0);
           if (options.v) {
             if (res == 0) {
-              if (options.patts.cur_size > 1) break;
+              if (options.patts.cur_size > 1) {
+                last_line = 0;
+                regfree(&preg);
+                break;
+              }
               res = 1;
             } else {
               if (i + 1 == options.patts.cur_size) res = 0;
             }
           }
           if (res == 0) {
+            last_line = 1;
             count_line_c++;
             if (!(options.l || options.c)) {
               if (!options.h && multiple_files) printf("%s:", filename);
@@ -68,17 +76,24 @@ void grep_2(FILE *mf, int argc, char *argv[], opt options, regex_t *preg,
                 printf("%s", line);
               }
             }
-            if (options.patts.cur_size > 1) break;
-          }
+            if (options.patts.cur_size > 1) {
+              regfree(&preg);
+              break;
+            }
+          } else
+            last_line = 0;
         }
       }
+      regfree(&preg);
     }
   }
   if (options.l)
     grep_files_with_matches(multiple_files, filename, options, count_line_c);
   else if (options.c)
     grep_match_count(multiple_files, filename, options, count_line_c);
-  else if (options.v && count_line_c != 0)
+  else if ((last_line) && count_line_c && !options.o)
+    printf("\n");
+  else if (options.o && options.v && last_line)
     printf("\n");
 }
 
@@ -136,8 +151,6 @@ int parser(int argc, char *argv[], opt *options) {
 void reader(int argc, char *argv[], opt *options) {
   FILE *mf = NULL;
   bool multiple_files = false;
-  regex_t preg_storage;
-  regex_t *preg = &preg_storage;
   char *filename;
   if (options->e || options->f)
     optind--;
@@ -153,11 +166,10 @@ void reader(int argc, char *argv[], opt *options) {
       fprintf(stderr, "error_open_file");
       break;
     } else {
-      grep_2(mf, argc, argv, *options, preg, multiple_files, filename);
+      grep_2(mf, argc, argv, *options, multiple_files, filename);
     }
     fclose(mf);
   }
-  regfree(preg);
 }
 
 void patterns_init(Patterns *const patts) {

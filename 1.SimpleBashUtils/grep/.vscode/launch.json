@@ -10,12 +10,11 @@
             "name": "Debug",
             "program": "${workspaceFolder}/a.out",
             "args": [
-                "-f",
-                "test.txt",
+                "-v",
                 "-e",
-                "grep",
-                "-iv",
-                "test1.txt",
+                "cat",
+                "-e",
+                "less",
                 "test2.txt"
             ],
             "cwd": "${workspaceFolder}"

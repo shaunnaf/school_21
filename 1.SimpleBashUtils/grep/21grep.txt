@@ -1,0 +1,6 @@
+test2.txt:Row 3 with text CAT another text
+test2.txt:ROW 4 with text CAT
+test2.txt:ROW 5 with text Cat
+test2.txt:Row 8 with text LESS another text
+test2.txt:ROW 9 with text LESS
+test1.txt:fdsfdsfs

@@ -1,11 +1,3 @@
 Row 1 with text cations another text
 Row 2 with text cat
-tRow 6 with text grep another text
-Row 2.5 with text cat$
-Row 3 with text CAT another text
-ROW 4 with text CAT
-ROW 5 with text Cat
-Row 7 with text grep
-Row 8 with text GREP another text
-ROW 9 with text GREP
-ROW 10 with text Grep
+fdsfdsfs
