@@ -136,15 +136,19 @@ int s21_calc_complements(matrix_t *A, matrix_t *result) {
   if (A->columns < 1 || A->rows < 1) {
     ret = 1;
   } else if (A->columns == A->rows) {
-    matrix_t minor;
-    double det;
     s21_create_matrix(A->columns, A->columns, result);
-    for (int i = 0; i < A->rows; i++) {
-      for (int j = 0; j < A->columns; j++) {
-        s21_create_minor(A, &minor, i, j);
-        s21_determinant(&minor, &det);
-        result->matrix[i][j] = (i + j) % 2 == 0 ? det : -det;
-        s21_remove_matrix(&minor);
+    if (A->rows == 1) {
+      result->matrix[0] = A->matrix[0];
+    } else {
+      matrix_t minor;
+      double det;
+      for (int i = 0; i < A->rows; i++) {
+        for (int j = 0; j < A->columns; j++) {
+          s21_create_minor(A, &minor, i, j);
+          s21_determinant(&minor, &det);
+          result->matrix[i][j] = (i + j) % 2 == 0 ? det : -det;
+          s21_remove_matrix(&minor);
+        }
       }
     }
   } else {
@@ -203,19 +207,24 @@ int s21_determinant(matrix_t *A, double *result) {
 int s21_inverse_matrix(matrix_t *A, matrix_t *result) {
   int ret = 0;
   double det = 0;
-  if (A->columns < 1 || A->rows < 1) {
-    ret = 1;
-  } else {
-    ret = s21_determinant(A, &det);
-    if (ret == 0 && det != 0) {
-      matrix_t complement, transpose;
-      s21_calc_complements(A, &complement);
-      s21_transpose(&complement, &transpose);
+  ret = s21_determinant(A, &det);
+  if (ret == 0 && det != 0) {
+    matrix_t complement, transpose;
+    if (A->rows == 1) {
+      s21_create_matrix(1, 1, result);
+      result->matrix[0][0] = 1 / A->matrix[0][0];
+    } else {
+      ret = s21_calc_complements(A, &complement);
+      if (ret == 0) {
+        ret = s21_transpose(&complement, &transpose);
+        if (ret == 0) {
+          ret = s21_mult_number(&transpose, 1. / det, result);
+        }
+        s21_remove_matrix(&transpose);
+      }
       s21_remove_matrix(&complement);
-      s21_mult_number(&transpose, 1. / det, result);
-      s21_remove_matrix(&transpose);
     }
-  }
-  if (det == 0 && ret == 0) ret = 2;
+  } else if (det == 0 && ret == 0)
+    ret = 2;
   return ret;
 }
