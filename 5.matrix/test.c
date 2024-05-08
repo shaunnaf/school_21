@@ -214,6 +214,12 @@ START_TEST(s21_calc_complements_test) {
   ck_assert_double_eq(result.matrix[2][0], -8);
   ck_assert_double_eq(result.matrix[2][1], -2);
   ck_assert_double_eq(result.matrix[2][2], 4);
+  s21_remove_matrix(&m1);
+  s21_remove_matrix(&result);
+  s21_create_matrix(1, 1, &m1);
+  m1.matrix[0][0] = 5;
+  s21_calc_complements(&m1, &result);
+  ck_assert_double_eq(result.matrix[0][0], 5);
 }
 END_TEST
 

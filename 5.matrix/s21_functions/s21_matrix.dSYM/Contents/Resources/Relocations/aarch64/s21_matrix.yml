@@ -1,0 +1,20 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/daniil/coding/school_21_my_git/5.matrix/s21_functions/s21_matrix'
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _s21_create_matrix, symObjAddr: 0x0, symBinAddr: 0x100002E00, symSize: 0xE0 }
+  - { offsetInCU: 0x33, offset: 0x33, size: 0x8, addend: 0x0, symName: _s21_create_matrix, symObjAddr: 0x0, symBinAddr: 0x100002E00, symSize: 0xE0 }
+  - { offsetInCU: 0xA1, offset: 0xA1, size: 0x8, addend: 0x0, symName: _s21_remove_matrix, symObjAddr: 0xE0, symBinAddr: 0x100002EE0, symSize: 0xA8 }
+  - { offsetInCU: 0xE1, offset: 0xE1, size: 0x8, addend: 0x0, symName: _compare_double, symObjAddr: 0x188, symBinAddr: 0x100002F88, symSize: 0x3C }
+  - { offsetInCU: 0x125, offset: 0x125, size: 0x8, addend: 0x0, symName: _s21_eq_matrix, symObjAddr: 0x1C4, symBinAddr: 0x100002FC4, symSize: 0x144 }
+  - { offsetInCU: 0x1A1, offset: 0x1A1, size: 0x8, addend: 0x0, symName: _s21_sum_matrix, symObjAddr: 0x308, symBinAddr: 0x100003108, symSize: 0x1C0 }
+  - { offsetInCU: 0x22B, offset: 0x22B, size: 0x8, addend: 0x0, symName: _s21_sub_matrix, symObjAddr: 0x4C8, symBinAddr: 0x1000032C8, symSize: 0x1C0 }
+  - { offsetInCU: 0x2B5, offset: 0x2B5, size: 0x8, addend: 0x0, symName: _s21_mult_number, symObjAddr: 0x688, symBinAddr: 0x100003488, symSize: 0x12C }
+  - { offsetInCU: 0x33F, offset: 0x33F, size: 0x8, addend: 0x0, symName: _s21_mult_matrix, symObjAddr: 0x7B4, symBinAddr: 0x1000035B4, symSize: 0x1E0 }
+  - { offsetInCU: 0x3E5, offset: 0x3E5, size: 0x8, addend: 0x0, symName: _s21_transpose, symObjAddr: 0x994, symBinAddr: 0x100003794, symSize: 0x120 }
+  - { offsetInCU: 0x461, offset: 0x461, size: 0x8, addend: 0x0, symName: _s21_calc_complements, symObjAddr: 0xAB4, symBinAddr: 0x1000038B4, symSize: 0x1E8 }
+  - { offsetInCU: 0x507, offset: 0x507, size: 0x8, addend: 0x0, symName: _s21_create_minor, symObjAddr: 0xC9C, symBinAddr: 0x100003A9C, symSize: 0x140 }
+  - { offsetInCU: 0x5B7, offset: 0x5B7, size: 0x8, addend: 0x0, symName: _s21_determinant, symObjAddr: 0xDDC, symBinAddr: 0x100003BDC, symSize: 0x210 }
+  - { offsetInCU: 0x65D, offset: 0x65D, size: 0x8, addend: 0x0, symName: _s21_inverse_matrix, symObjAddr: 0xFEC, symBinAddr: 0x100003DEC, symSize: 0x178 }
+  - { offsetInCU: 0x6D9, offset: 0x6D9, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x1164, symBinAddr: 0x100003F64, symSize: 0x14 }
+...

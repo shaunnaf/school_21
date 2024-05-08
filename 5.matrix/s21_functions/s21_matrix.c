@@ -228,3 +228,5 @@ int s21_inverse_matrix(matrix_t *A, matrix_t *result) {
     ret = 2;
   return ret;
 }
+
+int main() { return 0; }
