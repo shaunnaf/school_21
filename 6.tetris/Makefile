@@ -34,7 +34,7 @@ clean:
 	-rm -rf ./report/
 	-rm -rf report.out
 	-rm -rf tetris && rm -rf install
-	-rm -rf tetris_project.tar.gz
+	-rm -rf tetris_project.mar.gz
 
 test: clean $(EXECUTABLE).a
 	$(CC) $(CFLAGS) -lncurses test.c -L. $(EXECUTABLE).a -lcheck -o test
