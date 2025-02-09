@@ -1,0 +1,226 @@
+{
+	"info": {
+		"_postman_id": "3aa6e15c-31ce-42a8-84ec-1c3a353a8f58",
+		"name": "3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41711502"
+	},
+	"item": [
+		{
+			"name": "getMe",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.telegram.org/bot7617836838:AAEcZNfIiHQb9T4sLGET3IJEORTc9Y6CSg4/getMe",
+					"protocol": "https",
+					"host": [
+						"api",
+						"telegram",
+						"org"
+					],
+					"path": [
+						"bot7617836838:AAEcZNfIiHQb9T4sLGET3IJEORTc9Y6CSg4",
+						"getMe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUpdates",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.telegram.org/bot7617836838:AAEcZNfIiHQb9T4sLGET3IJEORTc9Y6CSg4/getUpdates",
+					"protocol": "https",
+					"host": [
+						"api",
+						"telegram",
+						"org"
+					],
+					"path": [
+						"bot7617836838:AAEcZNfIiHQb9T4sLGET3IJEORTc9Y6CSg4",
+						"getUpdates"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sendMessage",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://api.telegram.org/bot7617836838:AAEcZNfIiHQb9T4sLGET3IJEORTc9Y6CSg4/sendMessage?chat_id=753706898&text=hello",
+					"protocol": "https",
+					"host": [
+						"api",
+						"telegram",
+						"org"
+					],
+					"path": [
+						"bot7617836838:AAEcZNfIiHQb9T4sLGET3IJEORTc9Y6CSg4",
+						"sendMessage"
+					],
+					"query": [
+						{
+							"key": "chat_id",
+							"value": "753706898"
+						},
+						{
+							"key": "text",
+							"value": "hello"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addFile",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "chat_id",
+							"value": "753706898",
+							"type": "text"
+						},
+						{
+							"key": "photo",
+							"type": "file",
+							"src": "postman-cloud:///1efe08e2-a2aa-4370-9d8f-595d2ae718b0"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.telegram.org/bot7617836838:AAEcZNfIiHQb9T4sLGET3IJEORTc9Y6CSg4/sendPhoto",
+					"protocol": "https",
+					"host": [
+						"api",
+						"telegram",
+						"org"
+					],
+					"path": [
+						"bot7617836838:AAEcZNfIiHQb9T4sLGET3IJEORTc9Y6CSg4",
+						"sendPhoto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addPdf",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "chat_id",
+							"value": "753706898",
+							"type": "text"
+						},
+						{
+							"key": "photo",
+							"type": "file",
+							"src": "/C:/Users/Danila/Desktop/Упоров аттестат.pdf"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.telegram.org/bot7617836838:AAEcZNfIiHQb9T4sLGET3IJEORTc9Y6CSg4/sendPhoto",
+					"protocol": "https",
+					"host": [
+						"api",
+						"telegram",
+						"org"
+					],
+					"path": [
+						"bot7617836838:AAEcZNfIiHQb9T4sLGET3IJEORTc9Y6CSg4",
+						"sendPhoto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addDocx",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "chat_id",
+							"value": "753706898",
+							"type": "text"
+						},
+						{
+							"key": "photo",
+							"type": "file",
+							"src": "/C:/Users/Danila/Desktop/ex00.docx"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.telegram.org/bot7617836838:AAEcZNfIiHQb9T4sLGET3IJEORTc9Y6CSg4/sendPhoto",
+					"protocol": "https",
+					"host": [
+						"api",
+						"telegram",
+						"org"
+					],
+					"path": [
+						"bot7617836838:AAEcZNfIiHQb9T4sLGET3IJEORTc9Y6CSg4",
+						"sendPhoto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUserProfilePhotos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "user_id",
+							"value": "753706898",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.telegram.org/bot7617836838:AAEcZNfIiHQb9T4sLGET3IJEORTc9Y6CSg4/getUserProfilePhotos",
+					"protocol": "https",
+					"host": [
+						"api",
+						"telegram",
+						"org"
+					],
+					"path": [
+						"bot7617836838:AAEcZNfIiHQb9T4sLGET3IJEORTc9Y6CSg4",
+						"getUserProfilePhotos"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
